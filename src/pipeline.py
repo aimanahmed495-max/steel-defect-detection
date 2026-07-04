@@ -14,5 +14,9 @@ class DetectionResult:
 
 
 def run_pipeline(image: Any) -> dict[str, Any]:
-    """Run preprocessing, detection, post-processing, and VLM analysis."""
+    """Run preprocessing, detection, post-processing, and VLM analysis.
+
+    Preprocessing applies CLAHE via ``src.preprocess.preprocess_for_detection``
+    before YOLO inference.
+    """
     raise NotImplementedError("Inference pipeline is not implemented yet.")

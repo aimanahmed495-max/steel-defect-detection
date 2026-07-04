@@ -217,13 +217,11 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Cursor config
-.cursorrules
-
 # Project artifacts
 data/*
 !data/.gitkeep
 models/*
 !models/.gitkeep
+!models/README.md
 runs/
 *.pt

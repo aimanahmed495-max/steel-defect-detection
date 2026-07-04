@@ -8,3 +8,6 @@ openai
 anthropic
 pillow
 numpy
+pytest
+httpx
+huggingface_hub

@@ -1,0 +1,38 @@
+# Project Context
+
+This is a computer vision + AI demo project for a computer vision/AI consulting portfolio. The purpose is to create an impressive portfolio project that will help landing clients in Upwork and other freelancing platforms (the target clients need computer vision+ machine learning +Agentic AI services), as well as to help land machine learning + computer vision +Agenic AI jobs
+
+## What it does
+Detects surface defects on steel (NEU-DET dataset) using a fine-tuned YOLO11 
+model, then sends the cropped defect region to a vision-capable LLM 
+(GPT-4o-mini or Claude) to generate a natural language description, severity 
+assessment, and recommended action.
+
+## Approach
+- YOLO11 fine-tuned via transfer learning from a COCO-pretrained checkpoint
+- Annotations converted from PASCAL VOC/XML to YOLO format via a custom script
+- VLM step uses a hosted multimodal LLM API (no local hosting required)
+
+## Structure
+- /data — NEU-DET dataset (gitignored, from Kaggle "NEU Surface Defect Database")
+- /models — trained YOLO weights (gitignored, hosted on Hugging Face for reuse)
+- /src — core logic: annotation conversion, training, inference pipeline, VLM wrapper
+- /api — FastAPI backend, single endpoint takes image, returns report
+- /frontend — simple HTML/CSS/JS UI: upload image, see annotated result + report
+
+## Image Processing
+- Preprocessing: apply CLAHE (contrast-limited adaptive histogram equalization) 
+  to input images before YOLO inference — improves detection on low-contrast 
+  steel surface defects
+- Post-processing: use OpenCV to draw annotated bounding boxes on output images, 
+  and to crop detected defect regions (with padding) before sending to VLM
+- Document both in README as deliberate engineering choices, not just plumbing
+
+## Goals
+- Clean, production-quality code (this will be public on GitHub for portfolio/job applications)
+- Keep it simple — this is a demo, not a full product
+- API keys go in .env, never hardcoded
+- Commit incrementally — real development history, not one final dump
+
+## Stack
+Python, Ultralytics YOLO11, FastAPI, vanilla JS frontend, OpenAI/Anthropic API for VLM

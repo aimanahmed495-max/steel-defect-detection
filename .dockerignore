@@ -1,0 +1,15 @@
+.git
+.gitignore
+.venv
+__pycache__
+*.py[cod]
+.pytest_cache
+.ruff_cache
+data/
+runs/
+*.pt
+.env
+.ipynb_checkpoints
+notebooks/
+.cursorrules
+LICENSE
